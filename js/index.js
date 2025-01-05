@@ -63,7 +63,24 @@ mongoose.connect('mongodb+srv://prasannabollineni2:bollineni4266@cluster0.ngdtd.
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html')); // Serve the index.html file
 });
-
+app.get('/products', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'products.html')); // Serve the index.html file
+});
+app.get('/contact', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'contact.html')); // Serve the index.html file
+});
+app.get('/careers', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'careers.html')); // Serve the index.html file
+});
+app.get('/faqs', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'faqs.html')); // Serve the index.html file
+});
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'login.html')); // Serve the index.html file
+});
+app.get('/register', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'register.html')); // Serve the index.html file
+});
 // Registration route
 app.post('/register', async (req, res) => {
     const { firstName, lastName, email, contactNumber, password, confirmPassword } = req.body;
