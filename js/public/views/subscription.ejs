@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .product-category {
+            margin-bottom: 30px;
+        }
+        .product-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .product-item h2 {
+            margin: 0;
+        }
+        .subscription-form {
+            margin-top: 10px;
+        }
+        .subscription-form select, .subscription-form button {
+            margin-right: 10px;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .subscription-form button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        .subscription-form button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Subscribe to Our Products</h1>
+
+        <!-- Fruits Section -->
+        <div class="product-category">
+            <h2>Fruits</h2>
+            <% fruits.forEach(fruit => { %>
+            <div class="product-item">
+                <h2><%= fruit.name %></h2>
+                <p><%= fruit.description %></p>
+                <p><strong>Price:</strong> ₹<%= fruit.price %></p>
+                <form class="subscription-form" action="/subscribe" method="POST">
+                    <input type="hidden" name="productId" value="<%= fruit._id %>">
+                    <label for="duration">Subscription Duration:</label>
+                    <select name="duration" required>
+                        <option value="3 months">3 Months</option>
+                        <option value="6 months">6 Months</option>
+                        <option value="1 year">1 Year</option>
+                    </select>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+            <% }); %>
+        </div>
+
+        <!-- Vegetables Section -->
+        <div class="product-category">
+            <h2>Vegetables</h2>
+            <% products.forEach(product => { %>
+            <div class="product-item">
+                <h2><%= product.name %></h2>
+                <p><%= product.description %></p>
+                <p><strong>Price:</strong> ₹<%= product.price %></p>
+                <form class="subscription-form" action="/subscription-details" method="POST">
+                    <input type="hidden" name="productId" value="<%= product._id %>">
+                    <label for="duration">Subscription Duration:</label>
+                    <select name="duration" required>
+                        <option value="3 months">3 Months</option>
+                        <option value="6 months">6 Months</option>
+                        <option value="1 year">1 Year</option>
+                    </select>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const subscriptionForms = document.querySelectorAll('.subscription-form');
+            subscriptionForms.forEach(form => {
+                form.addEventListener('submit', (event) => {
+                    const duration = form.querySelector('select[name="duration"]').value;
+                    const productName = form.closest('.product-item').querySelector('h2').textContent;
+                    const confirmMessage = `Confirm subscription to "${productName}" for ${duration}?`;
+                    if (!confirm(confirmMessage)) {
+                        event.preventDefault();
+                    }
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>

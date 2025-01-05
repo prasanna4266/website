@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshMart - Fresh Produce</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <style>
+        /* Combo Selection Page */
+main {
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* For positioning checkboxes */
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Style the combo product list */
+#comboProductsList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+}
+
+#comboProductsList div {
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative; /* For absolute positioning of checkbox */
+}
+
+/* Style for each product option */
+#comboProductsList label {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: auto;
+}
+
+/* Make the checkboxes bigger and position them at the right-center */
+input[type="checkbox"] {
+    width: 30px; /* Make checkbox bigger */
+    height: 30px; /* Adjust the height as well */
+    position: absolute;
+    right: 20px; /* Position it on the right */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for exact vertical centering */
+}
+
+/* Style for the button */
+button.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+button.btn:hover {
+    background-color: #45a049;
+}
+
+button.btn:focus {
+    outline: none;
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">FreshMart</a>
+            <button class="mobile-menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faqs.html">FAQs</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+<main>
+    <h1>Select Products for Your Combo</h1>
+    <form action="/add-combo-to-cart1" method="POST">
+        <div id="comboProductsList">
+                <% products.forEach(product => { %>
+                    <div class="product">
+                        <h3><%= product.name %></h3>
+                        <img src="<%= product.img %>" alt="<%= product.name %>">
+                        <p><%= product.description %></p>
+                        <label for="duration-<%= product._id %>">Select Duration:</label>
+                        <select name="duration-<%= product._id %>" id="duration-<%= product._id %>">
+                            <option value="3mnths">3 Months</option>
+                            <option value="6mnths">6 Months</option>
+                            <option value="1year">1 Year</option>
+                        </select>
+                        <input type="checkbox" name="selectedProducts" value="<%= product._id %>">
+                        <label for="selectedProducts">Include in Combo</label>
+                    </div>
+                <% }); %>
+        </div>
+        <button type="submit">Add Combo to Cart</button>
+    </form>
+    
+    
+
+    
+</main>
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>FreshMart</h3>
+            <p>Bringing fresh produce directly from farms to your table.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faqs.html">FAQs</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-links">
+                <a href="#" class="social-link">Facebook</a>
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">Twitter</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 FreshMart. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+// Fetch available products and display them for combo selection
+window.onload = function () {
+    fetch('/get-available-products')
+        .then(response => response.json())
+        .then(products => {
+            const comboProductsList = document.getElementById('comboProductsList');
+            if (!products || products.length === 0) {
+                comboProductsList.innerHTML = '<p>No products available</p>';
+                return;
+            }
+            products.forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.classList.add('product');
+                productDiv.innerHTML = `
+                    <h3>${product.name}</h3>
+                    <img src="${product.img}" alt="${product.name}">
+                    <p>${product.description}</p>
+                    <p>Price: ₹${product.ourprice}</p>
+                `;
+                comboProductsList.appendChild(productDiv);
+            });
+        })
+        .catch(error => console.error('Error fetching products:', error));
+};
+
+</script>
+
+</body>
+</html>

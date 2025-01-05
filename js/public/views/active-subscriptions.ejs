@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshMart - Fresh Produce</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">FreshMart</a>
+            <button class="mobile-menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faqs.html">FAQs</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <h1>Your Active Subscription</h1>
+
+        <% if (subscriptions.length > 0) { %>
+            <ul>
+                <% subscriptions.forEach(subscription => { %>
+                    <li>
+                        <h2><%= subscription.productName %></h2>
+                        <img src="<%= subscription.productId.img %>" alt="<%= subscription.productId.name %>" width="150">
+                        <p><strong>Duration:</strong> <%= subscription.duration %></p>
+                        <p><strong>End Date:</strong> <%= subscription.endDate.toDateString() %></p>
+                        <p><strong>Max Quantity:</strong> 3kg/week</p>
+                        <p><strong>Product Price:</strong><%= subscription.price %></p>
+                        <!-- Order Now Button -->
+                        <form action="/order" method="POST">
+                            <input type="hidden" name="productId" value="<%= subscription.productId._id %>">
+                            <input type="hidden" name="price" value="<%= subscription.price %>">
+                            <button type="submit" class="btn">Order Product</button>
+                        </form>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>No active subscriptions found.</p>
+        <% } %>
+        
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>FreshMart</h3>
+                <p>Bringing fresh produce directly from farms to your table.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faqs.html">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">Facebook</a>
+                    <a href="#" class="social-link">Instagram</a>
+                    <a href="#" class="social-link">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 FreshMart. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

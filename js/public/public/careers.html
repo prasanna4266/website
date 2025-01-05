@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers</title>
+    <h1>Careers at Our Company</h1>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">FreshMart</a>
+                <button class="mobile-menu-btn">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faqs.html">FAQs</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+    </nav>
+    <main>
+    <section class="company-info">
+        <h2>About Us</h2>
+        <p>Welcome to [Your Company]! We're on a mission to [insert mission statement]. Join us and be a part of our innovative, inclusive, and collaborative team!</p>
+    </section>
+
+    <section class="job-listings">
+        <h2>Current Openings</h2>
+            <div class="job-card">
+                <h3>Job Titles : Product Manager,Sales Executive,Delivery Agent</h3>
+            </div>
+    </section>
+
+    <section class="application-form">
+        <h2>Submit Your Application</h2>
+        <form action="/careers/apply" method="POST" enctype="multipart/form-data">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="resume">Upload Resume:</label>
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message"></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <section class="contact-info">
+        <h2>Contact Us</h2>
+        <p>Email: careers@yourcompany.com</p>
+        <p>Phone: +1 (123) 456-7890</p>
+        <p>Location: 123 Innovation Drive, Tech City</p>
+    </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>FreshMart</h3>
+                <p>Bringing fresh produce directly from farms to your table.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faqs.html">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">Facebook</a>
+                    <a href="#" class="social-link">Instagram</a>
+                    <a href="#" class="social-link">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 FreshMart. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
