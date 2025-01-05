@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">FreshMart</a>
+            <button class="mobile-menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faqs.html">FAQs</a></li>
+                <li><a href="login.html">Login</a></li>
+
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <section class="products">
+            <h2>Our Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="/images/fruits-1600023_1920.jpg" alt="Fresh Fruits">
+                    <div class="product-info">
+                        <h3>Fruits</h3>
+                        <p>Seasonal fruits picked at peak ripeness</p>
+                        <a href="/fruits" class="product-link">View Products</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="/images/fruits-1600023_1920.jpg" alt="Fresh Vegetables">
+                    <div class="product-info">
+                        <h3>Vegetables</h3>
+                        <p>Discover farm-fresh vegetables</p>
+                        <a href="/products" class="product-link">View Products</a>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+        </section>
+
+    <div id="product-container"></div>
+    <ul id="product-list"></ul>
+    <script src="product.js"></script>
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>FreshMart</h3>
+                    <p>Bringing fresh produce directly from farms to your table.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FreshMart. All rights reserved.</p>
+            </div>
+        </footer>
+</body>
+</html>
