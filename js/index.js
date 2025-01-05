@@ -59,6 +59,10 @@ mongoose.connect('mongodb+srv://prasannabollineni2:bollineni4266@cluster0.ngdtd.
 .catch((err) => {
     console.error('Connection error:', err.message);
 });
+// Route for the root URL
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html')); // Serve the index.html file
+});
 
 // Registration route
 app.post('/register', async (req, res) => {
