@@ -9,13 +9,15 @@
     <link rel="stylesheet" type="text/css" href="/css/footer.css">
 </head>
 <body>
+        <div id="login-status" data-logged-in="false"></div>
+
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">FreshMart</a>
             <button class="mobile-menu-btn">
                 <span class="bar"></span>
                 <span class="bar"></span>
-                <span class="bar"></span> 
+                <span class="bar"></span>
             </button>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -23,12 +25,12 @@
                 <li><a href="careers.html">Careers</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="faqs.html">FAQs</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="/profile">Profile</a></li>
+                <li id="profile-link" style="display: none;"><a href="profile.html">Profile</a></li>
+                <li id="subscriptions-link" style="display: none;"><a href="subscriptions.html">Active Subscriptions</a></li>
+                <li id="login-link"><a href="login.html">Login</a></li>
             </ul>
         </div>
     </nav>
-
     <main>
         <section class="hero">
             <div class="hero-content">
@@ -91,5 +93,24 @@
     </footer>
 
     <script src="js/index.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get the login status from the hidden element
+            const loginStatusElement = document.getElementById('login-status');
+            const isLoggedIn = loginStatusElement.getAttribute('data-logged-in') === 'true';
+
+            // Get the nav links
+            const loginLink = document.getElementById('login-link');
+            const profileLink = document.getElementById('profile-link');
+            const subscriptionsLink = document.getElementById('subscriptions-link');
+
+            // Show/hide links based on login state
+            if (isLoggedIn) {
+                loginLink.style.display = 'none'; // Hide login button
+                profileLink.style.display = 'inline'; // Show profile button
+                subscriptionsLink.style.display = 'inline'; // Show subscriptions button
+            }
+        });
+    </script>
 </body>
 </html>
